@@ -29,6 +29,22 @@ ComplexNumber ComplexNumber::operator-(const ComplexNumber &c){
 }
 
 //Write your code here
+ComplexNumber ComplexNumber::operator*(const ComplexNumber &c){
+    return ComplexNumber((real*c.real-imag*c.imag),(real*c.imag + imag*c.real));
+}
+ComplexNumber ComplexNumber::operator/(const ComplexNumber &c){
+    double a = c.real*c.real + c.imag*c.imag;
+    return ComplexNumber((real*c.real + imag*c.imag)/a,(imag*c.real - real*c.imag)/a);
+}
+bool ComplexNumber::operator==(const ComplexNumber &c){
+    return real == c.real && imag == c.imag;
+}
+double ComplexNumber::abs(){
+	return sqrt((real*real)+(imag*imag));
+}
+double ComplexNumber::angle(){
+	return atan2(imag, real)*180 / M_PI;
+}
 
 int main(){
 	ComplexNumber a(1.5,2),b(3.2,-2.5),c(-1,1.2);	
